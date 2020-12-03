@@ -50,7 +50,7 @@
 				</v-expand-transition>
 
 				<v-col cols="2">
-					<v-btn icon color="gray" @click="openEditingModal()">
+					<v-btn icon color="gray" @click="openEditingModal(listing)">
 						<v-icon>mdi-clipboard-edit-outline</v-icon>
 					</v-btn>
 					<v-btn icon color="red" @click="deleteListing(listing.id)">
@@ -59,7 +59,7 @@
 				</v-col>
 			</v-card>
 		</transition-group>
-		<EditingModal :data="listing" v-if="open" @close="open = false"/>
+		<EditingModal :data="modalData" v-if="open" @close="open = false"/>
 	</div>
 </template>
 
@@ -69,14 +69,15 @@ import EditingModal from "./EditingModal";
 
 export default {
 	name: "Card",
-	components: {EditingModal},
 	props: ['listing'],
+	components: {EditingModal},
 	data() {
 		return {
 			list: '',
 			reveal: [],
 			isEditing: false,
-			open: false
+			open: false,
+			modalData: {}
 		}
 	},
 	methods: {
@@ -86,11 +87,11 @@ export default {
 					.delete();
 		},
 		revealIndex(itemIndex) {
-			console.log(itemIndex)
 			this.reveal.push(itemIndex)
 		},
-		openEditingModal() {
+		openEditingModal(data) {
 			this.open = true
+			this.modalData = data
 		}
 	},
 	firestore: {

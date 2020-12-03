@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import {db} from "../firebase/db";
 import CreateListing from "@/components/CreateListing";
 import Card from "@/components/Card";
 
@@ -20,16 +19,6 @@ export default {
 			list: [],
 			newListing: "",
 		};
-	},
-	methods: {
-		deleteListing(id) {
-			db.collection("list")
-					.doc(id)
-					.delete();
-		},
-	},
-	firestore: {
-		list: db.collection("list"),
 	},
 };
 </script>
