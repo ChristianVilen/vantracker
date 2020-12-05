@@ -11,7 +11,7 @@ const firebaseConfig = {
   storageBucket: "vantracker-5175f.appspot.com",
   messagingSenderId: "51219507964",
   appId: "1:51219507964:web:494e0f780b9d538718c579",
-  measurementId: "G-6WGMLRZHNY",
+  measurementId: "G-6WGMLRZHNY"
 };
 // Initialize Firebase
 

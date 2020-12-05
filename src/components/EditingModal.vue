@@ -9,152 +9,173 @@
 								md="12"
 						>
 							<v-text-field
-									v-model="data.licensePlate"
+									v-model="modalData.licensePlate"
 									label="Rekkari"
 							></v-text-field>
 						</v-col>
+					</v-row>
 
+					<v-row>
 						<v-col
 								cols="12"
 								md="12"
 						>
 							<v-text-field
-									v-model="data.model"
+									v-model="modalData.model"
 									label="Malli"
 							></v-text-field>
 						</v-col>
+					</v-row>
 
-						<v-row>
-							<v-col cols="12">Huollot</v-col>
-						</v-row>
+					<v-row>
+						<v-col cols="12">Huollot</v-col>
+					</v-row>
 
-						<v-row>
-							<v-col
-									cols="12"
-									sm="6"
-									md="4"
-							>
-								<v-menu
-										ref="menu"
-										v-model="menu"
-										:close-on-content-click="false"
-										:return-value.sync="data.nextService"
-										transition="scale-transition"
-										offset-y
-										min-width="290px"
-								>
-									<template v-slot:activator="{ on, attrs }">
-										<v-text-field
-												v-model="data.nextService"
-												label="Seuraava"
-												prepend-icon="mdi-calendar"
-												readonly
-												v-bind="attrs"
-												v-on="on"
-										></v-text-field>
-									</template>
-									<v-date-picker
-											v-model="data.nextService"
-											no-title
-											scrollable
-									>
-										<v-spacer></v-spacer>
-										<v-btn
-												text
-												color="primary"
-												@click="menu = false"
-										>
-											Cancel
-										</v-btn>
-										<v-btn
-												text
-												color="primary"
-												@click="$refs.menu.save(data.nextService)"
-										>
-											OK
-										</v-btn>
-									</v-date-picker>
-								</v-menu>
-							</v-col>
-							<v-spacer></v-spacer>
-							<v-col
-									cols="12"
-									sm="6"
-									md="4"
-							>
-								<v-menu
-										ref="menu2"
-										v-model="menu2"
-										:close-on-content-click="false"
-										:return-value.sync="data.lastService"
-										transition="scale-transition"
-										offset-y
-										min-width="290px"
-								>
-									<template v-slot:activator="{ on, attrs }">
-										<v-text-field
-												v-model="data.lastService"
-												label="Edellinen"
-												prepend-icon="mdi-calendar"
-												readonly
-												v-bind="attrs"
-												v-on="on"
-										></v-text-field>
-									</template>
-									<v-date-picker
-											v-model="data.lastService"
-											no-title
-											scrollable
-									>
-										<v-spacer></v-spacer>
-										<v-btn
-												text
-												color="primary"
-												@click="menu2 = false"
-										>
-											Cancel
-										</v-btn>
-										<v-btn
-												text
-												color="primary"
-												@click="$refs.menu2.save(data.lastService)"
-										>
-											OK
-										</v-btn>
-									</v-date-picker>
-								</v-menu>
-							</v-col>
-						</v-row>
-
-						<v-col>
-							<v-checkbox
-									v-model="data.webasto"
-									label="Webasto"
-							></v-checkbox>
-						</v-col>
+					<v-row>
 						<v-col
 								cols="6"
-								md="6"
+								sm="6"
+								md="4"
 						>
-							<v-checkbox
-									v-model="data.heater"
-									label="Lämmitin"
-							></v-checkbox>
+							<v-menu
+									ref="menu"
+									v-model="menu"
+									:close-on-content-click="false"
+									:return-value.sync="modalData.nextService"
+									transition="scale-transition"
+									offset-y
+									min-width="290px"
+							>
+								<template v-slot:activator="{ on, attrs }">
+									<v-text-field
+											v-model="modalData.nextService"
+											label="Seuraava"
+											prepend-icon="mdi-calendar"
+											readonly
+											v-bind="attrs"
+											v-on="on"
+									></v-text-field>
+								</template>
+								<v-date-picker
+										v-model="modalData.nextService"
+										no-title
+										scrollable
+								>
+									<v-spacer></v-spacer>
+									<v-btn
+											text
+											color="primary"
+											@click="menu = false"
+									>
+										Cancel
+									</v-btn>
+									<v-btn
+											text
+											color="primary"
+											@click="$refs.menu.save(modalData.nextService)"
+									>
+										OK
+									</v-btn>
+								</v-date-picker>
+							</v-menu>
 						</v-col>
+						<v-spacer></v-spacer>
 						<v-col
-								cols="12"
-								md="12"
+								cols="6"
+								sm="6"
+								md="4"
 						>
-							<v-text-field
-									v-model="data.description"
-									label="Kuvaus"
-							></v-text-field>
+							<v-menu
+									ref="menu2"
+									v-model="menu2"
+									:close-on-content-click="false"
+									:return-value.sync="modalData.lastService"
+									transition="scale-transition"
+									offset-y
+									min-width="290px"
+							>
+								<template v-slot:activator="{ on, attrs }">
+									<v-text-field
+											v-model="modalData.lastService"
+											label="Edellinen"
+											prepend-icon="mdi-calendar"
+											readonly
+											v-bind="attrs"
+											v-on="on"
+									></v-text-field>
+								</template>
+								<v-date-picker
+										v-model="modalData.lastService"
+										no-title
+										scrollable
+								>
+									<v-spacer></v-spacer>
+									<v-btn
+											text
+											color="primary"
+											@click="menu2 = false"
+									>
+										Cancel
+									</v-btn>
+									<v-btn
+											text
+											color="primary"
+											@click="$refs.menu2.save(modalData.lastService)"
+									>
+										OK
+									</v-btn>
+								</v-date-picker>
+							</v-menu>
 						</v-col>
-						<v-col
-								cols="12"
-								md="12"
-						>
-							Sulje
+					</v-row>
+
+					<v-col
+							cols="6"
+							md="6"
+					>
+						<v-checkbox
+								v-model="modalData.webasto"
+								label="Webasto"
+						></v-checkbox>
+					</v-col>
+					<v-col
+							cols="6"
+							md="6"
+					>
+						<v-checkbox
+								v-model="modalData.heater"
+								label="Lämmitin"
+						></v-checkbox>
+					</v-col>
+					<v-col
+							cols="12"
+							md="12"
+					>
+						<v-text-field
+								v-model="modalData.description"
+								label="Kuvaus"
+						></v-text-field>
+					</v-col>
+
+					<v-row>
+						<v-col cols="6" class="btn-holder">
+							<v-btn
+									depressed
+									color="primary"
+									@click="updateListing"
+							>
+								Päivitä
+							</v-btn>
+						</v-col>
+
+						<v-col cols="6" class="btn-holder">
+							<v-btn
+									depressed
+									color="secondary"
+									@click="closeModalButton()"
+							>
+								Sulje
+							</v-btn>
 						</v-col>
 					</v-row>
 				</v-container>
@@ -164,6 +185,8 @@
 </template>
 
 <script>
+import {db} from "@/firebase/db";
+
 export default {
 	name: "EditingModal",
 	props: ['data'],
@@ -172,12 +195,30 @@ export default {
 			menu: false,
 			menu2: false,
 			modal: false,
+			modalData: this.data
 		}
 	},
 	methods: {
 		closeModal(element) {
 			if (element.path[0].id === 'background') {
 				this.$emit('close')
+			}
+		},
+		closeModalButton() {
+			this.$emit('close')
+		},
+		async updateListing() {
+			if (this.modalData) {
+				await db.collection("list").doc(this.modalData.id).set({
+					licensePlate: this.modalData.licensePlate,
+					model: this.modalData.model,
+					lastService: this.modalData.lastService,
+					nextService: this.modalData.nextService,
+					webasto: this.modalData.webasto,
+					heater: this.modalData.heater,
+					description: this.modalData.description
+				});
+				this.modalData = '';
 			}
 		},
 	}
@@ -206,6 +247,10 @@ export default {
 	background: $color-white;
 	box-shadow: 29px 29px 59px #9c9c9c,
 	-29px -29px 59px #ffffff;
+}
+
+.btn-holder {
+
 }
 
 @media (max-width: 768px) {

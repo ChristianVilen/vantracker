@@ -140,7 +140,7 @@ export default {
 		}
 	},
 	firestore: {
-		list: db.collection("list"),
+		list: db.collection("list").orderBy('nextService'),
 	}
 }
 </script>

@@ -18,11 +18,7 @@ import VanList from './views/VanList.vue';
 
 export default {
 	name: 'App',
-
 	components: {VanList},
 
-	data: () => ({
-		//
-	}),
 };
 </script>
