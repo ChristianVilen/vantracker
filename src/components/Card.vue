@@ -19,6 +19,15 @@
 					<v-row>
 						<v-col cols="6" style="font-size: 15px">
 							<v-col cols="12">
+								<b>{{ format_date(listing.lastService) }}</b> Seuraava huolto
+							</v-col>
+							<v-col cols="12">
+								<b>{{ format_date(listing.nextService) }}</b> Edellinen huolto
+							</v-col>
+						</v-col>
+						
+						<v-col cols="6" style="font-size: 15px">
+							<v-col cols="12">
 								<v-btn
 										text
 										icon
@@ -39,16 +48,6 @@
 										{{ listing.heater ? 'mdi-checkbox-marked-circle-outline' : 'mdi-checkbox-blank-circle-outline' }}
 									</v-icon>
 								</v-btn>
-							</v-col>
-						</v-col>
-
-
-						<v-col cols="6" style="font-size: 15px">
-							<v-col cols="12">
-								<b>{{ format_date(listing.lastService) }}</b> Seuraava huolto
-							</v-col>
-							<v-col cols="12">
-								<b>{{ format_date(listing.nextService) }}</b> Edellinen huolto
 							</v-col>
 						</v-col>
 					</v-row>
