@@ -45,54 +45,6 @@
 									md="4"
 							>
 								<v-menu
-										ref="menu"
-										v-model="menu"
-										:close-on-content-click="false"
-										:return-value.sync="formData.nextService"
-										transition="scale-transition"
-										offset-y
-										min-width="290px"
-								>
-									<template v-slot:activator="{ on, attrs }">
-										<v-text-field
-												v-model="formData.nextService"
-												label="Seuraava"
-												prepend-icon="mdi-calendar"
-												readonly
-												v-bind="attrs"
-												v-on="on"
-										></v-text-field>
-									</template>
-									<v-date-picker
-											v-model="formData.nextService"
-											no-title
-											scrollable
-									>
-										<v-spacer></v-spacer>
-										<v-btn
-												text
-												color="primary"
-												@click="menu = false"
-										>
-											Cancel
-										</v-btn>
-										<v-btn
-												text
-												color="primary"
-												@click="$refs.menu.save(formData.nextService)"
-										>
-											OK
-										</v-btn>
-									</v-date-picker>
-								</v-menu>
-							</v-col>
-							<v-spacer></v-spacer>
-							<v-col
-									cols="12"
-									sm="6"
-									md="4"
-							>
-								<v-menu
 										ref="menu2"
 										v-model="menu2"
 										:close-on-content-click="false"
@@ -115,6 +67,7 @@
 											v-model="formData.lastService"
 											no-title
 											scrollable
+											locale="fi-FI"
 									>
 										<v-spacer></v-spacer>
 										<v-btn
@@ -122,12 +75,61 @@
 												color="primary"
 												@click="menu2 = false"
 										>
-											Cancel
+											Peruuta
 										</v-btn>
 										<v-btn
 												text
 												color="primary"
 												@click="$refs.menu2.save(formData.lastService)"
+										>
+											Aseta
+										</v-btn>
+									</v-date-picker>
+								</v-menu>
+							</v-col>
+							<v-spacer></v-spacer>
+							<v-col
+									cols="12"
+									sm="6"
+									md="4"
+							>
+								<v-menu
+										ref="menu"
+										v-model="menu"
+										:close-on-content-click="false"
+										:return-value.sync="formData.nextService"
+										transition="scale-transition"
+										offset-y
+										min-width="290px"
+								>
+									<template v-slot:activator="{ on, attrs }">
+										<v-text-field
+												v-model="formData.nextService"
+												label="Seuraava"
+												prepend-icon="mdi-calendar"
+												readonly
+												v-bind="attrs"
+												v-on="on"
+										></v-text-field>
+									</template>
+									<v-date-picker
+											v-model="formData.nextService"
+											no-title
+											scrollable
+											locale="fi-FI"
+									>
+										<v-spacer></v-spacer>
+										<v-btn
+												text
+												color="primary"
+												@click="menu = false"
+										>
+											Cancel
+										</v-btn>
+										<v-btn
+												text
+												color="primary"
+												@click="$refs.menu.save(formData.nextService)"
 										>
 											OK
 										</v-btn>
@@ -160,10 +162,10 @@
 						</v-row>
 
 						<v-btn class="mr-4" color="primary" @click="addListing">
-							submit
+							Lisää
 						</v-btn>
 						<v-btn>
-							clear
+							Tyhjennä
 						</v-btn>
 					</form>
 				</v-expansion-panel-content>

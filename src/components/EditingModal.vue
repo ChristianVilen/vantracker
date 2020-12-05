@@ -67,14 +67,14 @@
 											color="primary"
 											@click="menu = false"
 									>
-										Cancel
+										Peruuta
 									</v-btn>
 									<v-btn
 											text
 											color="primary"
 											@click="$refs.menu.save(modalData.nextService)"
 									>
-										OK
+										Päivitä
 									</v-btn>
 								</v-date-picker>
 							</v-menu>
@@ -115,14 +115,14 @@
 											color="primary"
 											@click="menu2 = false"
 									>
-										Cancel
+										Peruuta
 									</v-btn>
 									<v-btn
 											text
 											color="primary"
 											@click="$refs.menu2.save(modalData.lastService)"
 									>
-										OK
+										Päivitä
 									</v-btn>
 								</v-date-picker>
 							</v-menu>
@@ -195,7 +195,7 @@ export default {
 			menu: false,
 			menu2: false,
 			modal: false,
-			modalData: this.data
+			modalData: this.data,
 		}
 	},
 	methods: {

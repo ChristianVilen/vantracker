@@ -45,10 +45,10 @@
 
 						<v-col cols="6" style="font-size: 15px">
 							<v-col cols="12">
-								<b>{{ listing.nextService }}</b> Edellinen huolto
+								<b>{{ format_date(listing.lastService) }}</b> Seuraava huolto
 							</v-col>
 							<v-col cols="12">
-								<b>{{ listing.lastService }}</b> Seuraava huolto
+								<b>{{ format_date(listing.nextService) }}</b> Edellinen huolto
 							</v-col>
 						</v-col>
 					</v-row>
@@ -111,6 +111,7 @@
 <script>
 import {db} from "@/firebase/db";
 import EditingModal from "./EditingModal";
+import moment from 'moment'
 
 export default {
 	name: "Card",
@@ -137,7 +138,12 @@ export default {
 		openEditingModal(data) {
 			this.open = true
 			this.modalData = data
-		}
+		},
+		format_date(value) {
+			if (value) {
+				return moment(String(value)).format('DD/MM/YYYY')
+			}
+		},
 	},
 	firestore: {
 		list: db.collection("list").orderBy('nextService'),
