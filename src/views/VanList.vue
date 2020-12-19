@@ -1,18 +1,26 @@
 <template>
 	<div class="pt-3">
-		<v-row class="d-flex justify-center">
-			<CreateListing/>
+		<v-row v-if="this.$store.state.user.data === null">
+			<Login/>
 		</v-row>
-		<Card/>
+		<v-row v-else class="d-flex justify-center">
+			<v-col cols="12">
+				<CreateListing/>
+			</v-col>
+			<v-col cols="12">
+				<Card/>
+			</v-col>
+		</v-row>
 	</div>
 </template>
 
 <script>
 import CreateListing from "@/components/CreateListing";
 import Card from "@/components/Card";
+import Login from "@/components/Login";
 
 export default {
 	name: "VanList",
-	components: {Card, CreateListing},
+	components: {Login, Card, CreateListing},
 };
 </script>
